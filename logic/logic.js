@@ -13,20 +13,6 @@ function filterInLibrary(button){
     })
 }
 
-/*function giveToUser(){
-    let form = document.forms['give'];
-    let name = form.elements['name'].value;
-    let dateOfReturn = form.elements["dateOfReturn"].value;
-    // сериализуем данные в json
-    let user = JSON.stringify({name: name, date: dateOfReturn});
-    let request = new XMLHttpRequest();
-    // посылаем запрос на адрес "/user"
-    console.log('AJAX user:');
-    console.log(user);
-    request.open("POST", "/give", true);
-    request.send(user);
-}*/
-
 function callAjaxGet(id, callback){
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
