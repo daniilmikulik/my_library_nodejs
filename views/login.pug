@@ -1,0 +1,29 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        title Регистрация
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js' integrity='sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js' integrity='sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/' crossorigin='anonymous')
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            .container-fluid
+                a.navbar-brand(href='#') Моя библиотека
+                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+        .row.container-fluid
+            h1   Вход:
+            form.col-lg-6(method='POST', action='/login')
+                .form-group
+                    label(for='username')  Имя пользователя:
+                    input#username.form-control.form-control-lg(name='username' type='text' placeholder='Имя пользователя' required)
+                .form-group
+                    label(for='password')  Пароль:
+                    input#password.form-control.form-control-lg(name='password' type='password' placeholder='Пароль' required)
+                .container-fluid.row
+                    button.btn.btn-outline-success.mt-3.mx-3.col-lg-2.align-self-end(type='submit')  Войти
+                    button.btn.btn-outline-danger.mt-3.mx-3.col-lg-2(type='reset')  Отмена
+        .container-fluid
+            nav.navbar.fixed-bottom.navbar-dark.bg-dark
+                a.navbar-brand(href='#')  © Моя библиотека. Все права защищены

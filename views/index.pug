@@ -1,0 +1,54 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        title  My library
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js' integrity='sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js' integrity='sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/' crossorigin='anonymous')
+        script(src='/logic.js')
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            .container-fluid
+                a.navbar-brand(href='/library') Моя библиотека
+                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarSupportedContent.collapse.navbar-collapse
+                    ul.navbar-nav.me-auto.mb-2.mb-lg-0
+                        li.nav-item
+                            a.nav-link.active(aria-current='page' href='/library') Вернуться домой
+
+                    //a.btn.btn-outline-light.me-2(href='/login/signup')  Зарегистрироваться
+                    //a.btn.btn-outline-primary(href='/login')  Войти
+        .container-fluid
+            .jumbotron.mt-2
+                h1.display-4 Моя библиотека
+                p.lead
+                    | Это место, где собраны книги из Вашей личной библиотеки. Здесь вы можете добавлять либо удалять книги, получать информацию об имеющихся и выданных на время книгах.
+        .container-fluid.row
+            h3  Фильтровать по:
+            .col-lg-6
+                .btn-group
+                    button#in.btn.btn-outline-primary(onclick='filterInLibrary(this)')  В наличии
+                    button#return.btn.btn-outline-primary(onclick='filterInLibrary(this)')  Возвращены
+                    button#expired.btn.btn-outline-primary(onclick='filterInLibrary(this)')  Просрочены
+            .col-lg-6
+                a.btn.btn-outline-success.me-2(href='/edit/add')  Добавить книгу
+        .row.container-fluid.mb-4
+            each item in library
+                .title.col-sm-12.col-md-5.col-lg-3.mt-3.mb-3(id=item.title)
+                    .card
+                        .card-body
+                            h5.card-title #{item.title}
+                            h5.card-subtitle.mb-2.text-muted  #{item.author}
+                            if item.isInLibrary == 'true'
+                                h6.card-subtitle.mb-2.text-muted  В наличии
+                            else
+                                h6.card-subtitle.mb-2.text-muted  Нет в наличии
+                            p.card-text
+                                | Краткое описание книги
+                            a.btn.btn-primary(href='/book/' + item.title)  Подробнее
+        .container-fluid
+            nav.navbar.fixed-bottom.navbar-dark.bg-dark
+                a.navbar-brand(href='#')  © Моя библиотека. Все права защищены
